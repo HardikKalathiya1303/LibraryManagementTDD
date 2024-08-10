@@ -52,4 +52,42 @@ public class Library {
         }
         return availableBooks;
     }
+
+    public static void main(String[] args) {
+        Library library = new Library();
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("\nLibrary Menu:");
+            System.out.println("1. Add Book");
+            System.out.println("5. Exit");
+            System.out.print("Choose an option: ");
+
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter ISBN: ");
+                    String isbnAdd = scanner.nextLine();
+                    System.out.print("Enter Title: ");
+                    String titleAdd = scanner.nextLine();
+                    System.out.print("Enter Author: ");
+                    String authorAdd = scanner.nextLine();
+                    System.out.print("Enter Publication Year: ");
+                    int yearAdd = scanner.nextInt();
+                    scanner.nextLine();
+                    library.addBook(isbnAdd, titleAdd, authorAdd, yearAdd);
+                    break;
+                case 5:
+                    System.out.println("Exiting...");
+                    scanner.close();
+                    return;
+
+                default:
+                    System.out.println("Invalid option. Please try again.");
+                    break;
+            }
+        }
+    }
 }

@@ -56,4 +56,16 @@ class LibraryTest {
         List<Book> availableBooks = library.viewAvailableBooks();
         assertTrue(availableBooks.isEmpty(), "Expected no books to be added with invalid ISBN");
     }
+    @Test
+    void testAddBook() {
+        String isbn = getRandomISBN();
+        String title = getRandomTitle();
+        String author = getRandomAuthor();
+        int year = 2021;
+
+        library.addBook(isbn, title, author, year);
+        List<Book> availableBooks = library.viewAvailableBooks();
+        assertEquals(1, availableBooks.size());
+        assertEquals(title, availableBooks.get(0).getTitle());
+    }
 }
