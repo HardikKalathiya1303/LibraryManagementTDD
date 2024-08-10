@@ -61,6 +61,7 @@ public class Library {
             System.out.println("\nLibrary Menu:");
             System.out.println("1. Add Book");
             System.out.println("2. Borrow Book");
+            System.out.println("3. Return Book");
             System.out.println("5. Exit");
             System.out.print("Choose an option: ");
 
@@ -85,6 +86,12 @@ public class Library {
                     System.out.print("Enter ISBN to borrow: ");
                     String isbnBorrow = scanner.nextLine();
                     System.out.println(library.borrowBook(isbnBorrow));
+                    break;
+
+                case 3:
+                    System.out.print("Enter ISBN to return: ");
+                    String isbnReturn = scanner.nextLine();
+                    System.out.println(library.returnBook(isbnReturn));
                     break;
 
                 case 5:
