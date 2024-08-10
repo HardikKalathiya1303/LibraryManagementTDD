@@ -123,4 +123,10 @@ class LibraryTest {
         assertEquals("Book was not borrowed", result);
     }
 
+    @Test
+    void testReturnBookNotFound() {
+        String result = library.returnBook(getRandomISBN());
+        assertEquals("Book not found", result);
+    }
+
 }
