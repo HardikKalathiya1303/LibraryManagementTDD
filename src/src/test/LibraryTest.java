@@ -68,4 +68,11 @@ class LibraryTest {
         assertEquals(1, availableBooks.size());
         assertEquals(title, availableBooks.get(0).getTitle());
     }
+    @Test
+    void testBorrowBookInvalidISBN() {
+        String result = library.borrowBook("INVALID_ISBN"); // Invalid ISBN
+        assertEquals("Unexpected result", result); // Incorrect expected value
+    }
+
+
 }
