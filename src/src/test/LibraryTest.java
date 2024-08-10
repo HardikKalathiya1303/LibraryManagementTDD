@@ -73,6 +73,16 @@ class LibraryTest {
         String result = library.borrowBook("INVALID_ISBN"); // Invalid ISBN
         assertEquals("Unexpected result", result); // Incorrect expected value
     }
+    @Test
+    void testBorrowBookSuccess() {
+        String isbn = getRandomISBN();
+        String title = getRandomTitle();
+        String author = getRandomAuthor();
+        int year = 2021;
 
+        library.addBook(isbn, title, author, year);
+        String result = library.borrowBook(isbn);
+        assertEquals("Book borrowed successfully", result);
+    }
 
 }

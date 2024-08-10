@@ -60,6 +60,7 @@ public class Library {
         while (true) {
             System.out.println("\nLibrary Menu:");
             System.out.println("1. Add Book");
+            System.out.println("2. Borrow Book");
             System.out.println("5. Exit");
             System.out.print("Choose an option: ");
 
@@ -79,6 +80,13 @@ public class Library {
                     scanner.nextLine();
                     library.addBook(isbnAdd, titleAdd, authorAdd, yearAdd);
                     break;
+
+                case 2:
+                    System.out.print("Enter ISBN to borrow: ");
+                    String isbnBorrow = scanner.nextLine();
+                    System.out.println(library.borrowBook(isbnBorrow));
+                    break;
+
                 case 5:
                     System.out.println("Exiting...");
                     scanner.close();
