@@ -62,6 +62,7 @@ public class Library {
             System.out.println("1. Add Book");
             System.out.println("2. Borrow Book");
             System.out.println("3. Return Book");
+            System.out.println("4. View Available Books");
             System.out.println("5. Exit");
             System.out.print("Choose an option: ");
 
@@ -92,6 +93,18 @@ public class Library {
                     System.out.print("Enter ISBN to return: ");
                     String isbnReturn = scanner.nextLine();
                     System.out.println(library.returnBook(isbnReturn));
+                    break;
+
+                case 4:
+                    List<Book> availableBooks = library.viewAvailableBooks();
+                    if (availableBooks.isEmpty()) {
+                        System.out.println("No available books.");
+                    } else {
+                        System.out.println("Available Books:");
+                        for (Book book : availableBooks) {
+                            System.out.println("ISBN: " + book.getIsbn() + ", Title: " + book.getTitle() + ", Author: " + book.getAuthor());
+                        }
+                    }
                     break;
 
                 case 5:

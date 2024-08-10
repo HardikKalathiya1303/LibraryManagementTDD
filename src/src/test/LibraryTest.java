@@ -152,4 +152,25 @@ class LibraryTest {
         assertEquals(title1, availableBooks.get(0).getTitle()); // Incorrect expectation
     }
 
+    @Test
+    void testViewAvailableBooks() {
+        String isbn1 = getRandomISBN();
+        String title1 = getRandomTitle();
+        String author1 = getRandomAuthor();
+        int year1 = 2021;
+
+        String isbn2 = getRandomISBN();
+        String title2 = getRandomTitle();
+        String author2 = getRandomAuthor();
+        int year2 = 2021;
+
+        library.addBook(isbn1, title1, author1, year1);
+        library.addBook(isbn2, title2, author2, year2);
+        library.borrowBook(isbn1);
+
+        List<Book> availableBooks = library.viewAvailableBooks();
+        assertEquals(1, availableBooks.size());
+        assertEquals(title2, availableBooks.get(0).getTitle());
+    }
+
 }
