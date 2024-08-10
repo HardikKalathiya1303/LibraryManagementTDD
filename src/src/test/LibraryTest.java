@@ -1,5 +1,15 @@
 package src.test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.util.List;
+import java.util.Random;
 import src.main.Library; // Import the Library class
+import src.main.Book; // Import the Book class
+
 class LibraryTest {
 
     private Library library;
@@ -14,5 +24,36 @@ class LibraryTest {
             "The Great War of Hind", "Ramayana",
             "The Palace of Illusions", "Jaya"
     };
+    private Random random;
 
+    @BeforeEach
+    void setUp() {
+        library = new Library();
+        random = new Random();
+    }
+
+    private String getRandomISBN() {
+        return String.format("%05d", random.nextInt(100000));
+    }
+
+    private String getRandomAuthor() {
+        return AUTHORS[random.nextInt(AUTHORS.length)];
+    }
+
+    private String getRandomTitle() {
+        return TITLES[random.nextInt(TITLES.length)];
+    }
+
+    @Test
+    void testAddBookWithInvalidISBN() {
+        String isbn = "INVALID_ISBN"; // Invalid ISBN
+        String title = getRandomTitle();
+        String author = getRandomAuthor();
+        int year = 2021;
+
+        // This should fail because the system doesn't handle invalid ISBNs yet
+        library.addBook(isbn, title, author, year);
+        List<Book> availableBooks = library.viewAvailableBooks();
+        assertTrue(availableBooks.isEmpty(), "Expected no books to be added with invalid ISBN");
+    }
 }
