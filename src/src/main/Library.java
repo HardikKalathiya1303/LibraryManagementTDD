@@ -20,8 +20,16 @@ public class Library {
     }
     public String borrowBook(String isbn) {
         Book book = books.get(isbn);
+        if (book == null) {
+            return "Book not found";
+        }
+        if (!book.isAvailable()) {
+            return "Book is already borrowed";
+        }
+        book.setAvailable(false);
         return "Book borrowed successfully";
     }
+
     public List<Book> viewAvailableBooks() {
         List<Book> availableBooks = new ArrayList<>();
         for (Entry<String, Book> entry : books.entrySet()) {
