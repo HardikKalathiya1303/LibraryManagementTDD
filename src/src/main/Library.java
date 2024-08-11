@@ -31,6 +31,13 @@ public class Library {
     }
     public String returnBook(String isbn) {
         Book book = books.get(isbn);
+        if (book == null) {
+            return "Book not found";
+        }
+        if (book.isAvailable()) {
+            return "Book was not borrowed";
+        }
+        book.setAvailable(true);
         return "Book returned successfully";
     }
     public List<Book> viewAvailableBooks() {
