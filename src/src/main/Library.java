@@ -29,7 +29,10 @@ public class Library {
         book.setAvailable(false);
         return "Book borrowed successfully";
     }
-
+    public String returnBook(String isbn) {
+        Book book = books.get(isbn);
+        return "Book returned successfully";
+    }
     public List<Book> viewAvailableBooks() {
         List<Book> availableBooks = new ArrayList<>();
         for (Entry<String, Book> entry : books.entrySet()) {
