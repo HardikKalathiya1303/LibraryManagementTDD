@@ -89,6 +89,18 @@ public class Library {
                     String isbnReturn = scanner.nextLine();
                     System.out.println(library.returnBook(isbnReturn));
                     break;
+                case 4:
+                    List<Book> availableBooks = library.viewAvailableBooks();
+                    if (availableBooks.isEmpty()) {
+                        System.out.println("No available books.");
+                    } else {
+                        System.out.println("Available Books:");
+                        for (Book book : availableBooks) {
+                            System.out.println("ISBN: " + book.getIsbn() + ", Title: " + book.getTitle() + ", Author: "
+                                    + book.getAuthor());
+                        }
+                    }
+                    break;
                 case 5:
                     System.out.println("Exiting...");
                     scanner.close();
