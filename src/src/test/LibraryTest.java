@@ -121,4 +121,34 @@ class LibraryTest {
         assertEquals("Book was not borrowed", result);
     }
 
+    @Test
+    void testReturnBookNotFound() {
+        String result = library.returnBook(getRandomISBN());
+        assertEquals("Book not found", result);
+    }
+
+
+    @Test
+    void testViewAvailableBooksFail() {
+        String isbn1 = getRandomISBN();
+        String title1 = getRandomTitle();
+        String author1 = getRandomAuthor();
+        int year1 = 2021;
+
+        String isbn2 = getRandomISBN();
+        String title2 = getRandomTitle();
+        String author2 = getRandomAuthor();
+        int year2 = 2021;
+
+        // Add books to the library
+        library.addBook(isbn1, title1, author1, year1);
+        library.addBook(isbn2, title2, author2, year2);
+
+        // Borrow one book
+        library.borrowBook(isbn1);
+
+        List<Book> availableBooks = library.viewAvailableBooks();
+        assertEquals(2, availableBooks.size()); // Incorrect expectation
+        assertEquals(title1, availableBooks.get(0).getTitle()); // Incorrect expectation
+    }
 }
