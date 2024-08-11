@@ -109,5 +109,16 @@ class LibraryTest {
         String result = library.returnBook(isbn);
         assertEquals("Book returned successfully", result);
     }
+    @Test
+    void testReturnBookNotBorrowed() {
+        String isbn = getRandomISBN();
+        String title = getRandomTitle();
+        String author = getRandomAuthor();
+        int year = 2021;
+
+        library.addBook(isbn, title, author, year);
+        String result = library.returnBook(isbn);
+        assertEquals("Book was not borrowed", result);
+    }
 
 }
