@@ -43,4 +43,13 @@ class LibraryTest {
     private String getRandomTitle() {
         return TITLES[random.nextInt(TITLES.length)];
     }
+    @Test
+    void testAddBook() {
+        String isbn = getRandomISBN();
+        String title = getRandomTitle();
+        String author = getRandomAuthor();
+        int year = 2021;
+    }
+
+
 }
