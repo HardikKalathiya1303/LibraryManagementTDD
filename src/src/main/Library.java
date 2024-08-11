@@ -84,6 +84,11 @@ public class Library {
                     String isbnBorrow = scanner.nextLine();
                     System.out.println(library.borrowBook(isbnBorrow));
                     break;
+                case 3:
+                    System.out.print("Enter ISBN to return: ");
+                    String isbnReturn = scanner.nextLine();
+                    System.out.println(library.returnBook(isbnReturn));
+                    break;
                 case 5:
                     System.out.println("Exiting...");
                     scanner.close();
