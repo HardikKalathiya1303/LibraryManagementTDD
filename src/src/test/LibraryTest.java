@@ -55,6 +55,19 @@ class LibraryTest {
         assertEquals(1, availableBooks.size());
         assertEquals(title, availableBooks.get(0).getTitle());
     }
+    @Test
+    void testAddBookWithInvalidISBN() {
+        String isbn = "INVALID_ISBN"; // Invalid ISBN
+        String title = getRandomTitle();
+        String author = getRandomAuthor();
+        int year = 2021;
+
+        // This should fail because the system doesn't handle invalid ISBNs yet
+        library.addBook(isbn, title, author, year);
+        List<Book> availableBooks = library.viewAvailableBooks();
+        assertTrue(availableBooks.isEmpty(), "Expected no books to be added with invalid ISBN");
+    }
+
 
 
 }
