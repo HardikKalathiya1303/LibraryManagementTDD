@@ -18,7 +18,10 @@ public class Library {
         books.put(isbn, new Book(isbn, title, author, publicationYear));
         System.out.println("Book added: " + title);
     }
-
+    public String borrowBook(String isbn) {
+        Book book = books.get(isbn);
+        return "Book borrowed successfully";
+    }
     public List<Book> viewAvailableBooks() {
         List<Book> availableBooks = new ArrayList<>();
         for (Entry<String, Book> entry : books.entrySet()) {
@@ -56,6 +59,12 @@ public class Library {
                     int yearAdd = scanner.nextInt();
                     scanner.nextLine();
                     library.addBook(isbnAdd, titleAdd, authorAdd, yearAdd);
+                    break;
+
+                case 2:
+                    System.out.print("Enter ISBN to borrow: ");
+                    String isbnBorrow = scanner.nextLine();
+                    System.out.println(library.borrowBook(isbnBorrow));
                     break;
                 case 5:
                     System.out.println("Exiting...");

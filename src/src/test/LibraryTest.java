@@ -67,7 +67,11 @@ class LibraryTest {
         List<Book> availableBooks = library.viewAvailableBooks();
         assertTrue(availableBooks.isEmpty(), "Expected no books to be added with invalid ISBN");
     }
-
+    @Test
+    void testBorrowBookInvalidISBN() {
+        String result = library.borrowBook("INVALID_ISBN"); // Invalid ISBN
+        assertEquals("Unexpected result", result); // Incorrect expected value
+    }
 
 
 
