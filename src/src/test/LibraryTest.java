@@ -49,6 +49,11 @@ class LibraryTest {
         String title = getRandomTitle();
         String author = getRandomAuthor();
         int year = 2021;
+
+        library.addBook(isbn, title, author, year);
+        List<Book> availableBooks = library.viewAvailableBooks();
+        assertEquals(1, availableBooks.size());
+        assertEquals(title, availableBooks.get(0).getTitle());
     }
 
 
