@@ -85,4 +85,17 @@ class LibraryTest {
         assertEquals("Book borrowed successfully", result);
     }
 
+    @Test
+    void testBorrowBookAlreadyBorrowed() {
+        String isbn = getRandomISBN();
+        String title = getRandomTitle();
+        String author = getRandomAuthor();
+        int year = 2021;
+
+        library.addBook(isbn, title, author, year);
+        library.borrowBook(isbn);
+        String result = library.borrowBook(isbn);
+        assertEquals("Book is already borrowed", result);
+    }
+
 }
